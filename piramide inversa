@@ -1,0 +1,10 @@
+#Este programa dibuja un cuadrado de las dimensiones que el usuario desee
+def cuadrado():
+  n_filas=int(input("De qué tamaño quieres el cuadrado (1-10)"))
+#Esto es un bucle anidado (nested)
+  for fila in range(n_filas,1,-1):
+    for col in range(fila,1,-1):
+      print('* ', end='')
+    print(" ") #\n hace un salto de linea
+
+cuadrado()
