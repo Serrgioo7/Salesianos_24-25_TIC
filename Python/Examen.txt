@@ -1,0 +1,156 @@
+Aquí tienes las soluciones a los ejercicios del examen. Los códigos están escritos para ser simples y claros, adecuados para principiantes.
+
+---
+
+### **Ejercicio 1: Modificar y corregir el código**
+
+#### a. Código corregido y tabulado:
+```python
+def programa_2():
+    word = input("Introduce una palabra: ")
+    longest_word = word
+    word_lengths = len(word)
+
+    for i in range(4):
+        word = input("Introduce otra palabra: ")
+        word_lengths += len(word)
+        if len(word) > len(longest_word):
+            longest_word = word
+
+    print("La palabra más larga es:", longest_word)
+    print("La longitud promedio es:", word_lengths / 5)
+
+programa_2()
+```
+
+#### b. Resultado para entradas específicas:
+Por ejemplo, si introduces: **"Hola"**, **"Adiós"**, **"Python"**, **"Sol"**, **"Gato"**  
+Salida:  
+```
+La palabra más larga es: Python  
+La longitud promedio es: 4.6
+```
+
+#### c. Con `while` en lugar de `for`:
+```python
+def programa_2():
+    word = input("Introduce una palabra: ")
+    longest_word = word
+    word_lengths = len(word)
+    count = 1
+
+    while count < 5:
+        word = input("Introduce otra palabra: ")
+        word_lengths += len(word)
+        if len(word) > len(longest_word):
+            longest_word = word
+        count += 1
+
+    print("La palabra más larga es:", longest_word)
+    print("La longitud promedio es:", word_lengths / 5)
+
+programa_2()
+```
+
+#### d. Comprobar orden alfabético:
+```python
+def programa_2():
+    words = []
+    word = input("Introduce una palabra: ")
+    words.append(word)
+    longest_word = word
+    word_lengths = len(word)
+
+    for i in range(4):
+        word = input("Introduce otra palabra: ")
+        words.append(word)
+        word_lengths += len(word)
+        if len(word) > len(longest_word):
+            longest_word = word
+
+    is_alphabetical = words == sorted(words)
+    print("La palabra más larga es:", longest_word)
+    print("La longitud promedio es:", word_lengths / 5)
+    print("Las palabras están en orden alfabético:", is_alphabetical)
+
+programa_2()
+```
+
+---
+
+### **Ejercicio 2: Variación de Piedra, Papel o Tijera**
+
+```python
+import random
+
+def piedra_papel_tijera():
+    opciones = ["piedra", "papel", "tijera"]
+    rondas_jugadas = 0
+    victorias_jugador = 0
+
+    while True:
+        jugador = input("Elige piedra, papel o tijera (o escribe 'salir' para terminar): ").strip().lower()
+        if jugador == "salir":
+            break
+        if jugador not in opciones:
+            print("Opción inválida. Por favor, elige piedra, papel o tijera.")
+            continue
+
+        computadora = random.choice(opciones)
+        print(f"La computadora eligió: {computadora}")
+
+        if jugador == computadora:
+            print("¡Es un empate!")
+        elif (jugador == "piedra" and computadora == "tijera") or \
+             (jugador == "papel" and computadora == "piedra") or \
+             (jugador == "tijera" and computadora == "papel"):
+            print("¡Tú ganas!")
+            victorias_jugador += 1
+        else:
+            print("¡La computadora gana!")
+
+        rondas_jugadas += 1
+
+    if rondas_jugadas > 0:
+        porcentaje_victorias = (victorias_jugador / rondas_jugadas) * 100
+        print(f"\nResumen del juego:")
+        print(f"Rondas jugadas: {rondas_jugadas}")
+        print(f"Victorias del jugador: {victorias_jugador}")
+        print(f"Porcentaje de victorias: {porcentaje_victorias:.2f}%")
+    else:
+        print("No se jugaron rondas.")
+
+piedra_papel_tijera()
+```
+
+---
+
+### **Ejercicio 3: Modificar una oración**
+
+```python
+def modificar_oracion():
+    oracion = input("Introduce una oración: ")
+    palabras = oracion.split()
+    palabras_modificadas = []
+
+    for palabra in palabras:
+        nueva_palabra = ""
+        for letra in palabra:
+            if letra.lower() in "aeiou":
+                nueva_palabra += "*"
+            else:
+                nueva_palabra += letra
+        palabras_modificadas.append(nueva_palabra)
+
+    salida = "-".join(palabras_modificadas)
+    print(f"Las palabras modificadas son: {salida}")
+
+modificar_oracion()
+```
+
+#### **Ejemplo de ejecución:**
+Entrada: **"Hola mundo Python"**  
+Salida:  
+```
+Las palabras modificadas son: H*l*-m*nd*-Pyth*n
+```
