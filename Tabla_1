@@ -1,6 +1,0 @@
-def tabla_1():
-  print("ELIGE UNA TABLA")
-  n_tabla=input("ELIGE UNA TABLA ")
-  print("Has elegido la tabla del "+n_tabla)
-
-tabla_1()
